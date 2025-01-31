@@ -1,0 +1,45 @@
+@import '../../styles.scss';
+
+.search {
+  &-form {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+
+    @include breakpoint(md) {
+      flex-flow: row;
+    }
+  }
+
+  &-input,
+  &-button,
+  &-select {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  @include breakpoint(md) {
+    &-input {
+      flex: 1 1 300px;
+    }
+
+    &-select {
+      flex: 1 1 150px;
+    }
+  }
+
+  &-button {
+    border-radius: 0.5em;
+    border-width: 1px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
