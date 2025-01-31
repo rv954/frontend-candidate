@@ -1,12 +1,18 @@
 <div class="search-container">
-  <form class="search-form">
+  <form class="search-form" (ngSubmit)="search()">
     <input
       type="text"
       placeholder="Person"
       class="search-input"
+      [(ngModel)]="term"
       name="term"
     />
-    <select name="colors" id="colors" class="search-select">
+    <select
+      name="colors"
+      id="colors"
+      class="search-select"
+      [(ngModel)]="color"
+    >
       <option value="blue">blue</option>
       <option value="red">red</option>
       <option value="green">green</option>
@@ -14,15 +20,19 @@
     <button type="submit" class="search-button">Search</button>
   </form>
 
-  <div class="error-message">Error Message</div>
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
 
-  <div class="search-results">
+  <div class="search-results" *ngIf="results.length">
     <h1>Search Results</h1>
     <div class="search-grid">
-      <div class="card">
+      <div class="card" *ngFor="let result of results">
         <div class="card-title">
           <h3>
-            <a [routerLink]="['/details/123']">Person Name</a>
+            <a [routerLink]="['/details', result.id]">{{
+              result.name
+            }}</a>
           </h3>
         </div>
       </div>

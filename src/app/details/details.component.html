@@ -1,18 +1,25 @@
 <div class="details-container">
   <a [routerLink]="['/']">Back to Search Results</a>
-  <div>
-    <h1>Person Name</h1>
-    <p>Favorite Color: Favorite Color</p>
-    <div class="card">
-      <div class="card-body">
-        <ul>
-          <li>
-            <q> Qui error sit sint et autem. </q>
-          </li>
-          <small class="card-footer"># Likes</small>
-        </ul>
-      </div>
+  <div *ngIf="person">
+    <h1>{{ person.name }}</h1>
+    <p>Favorite Color: {{ person.favorite_color }}</p>
+    <div
+    *ngFor="let quote of person.quotes | sortQuotes | keyvalue"
+    class="card"
+    >
+    <div class="card-body">
+      <ul>
+        <li *ngFor="let q of quote.value">
+          <q>
+            {{ q }}
+          </q>
+        </li>
+        <small class="card-footer">{{ quote.key }} Likes</small>
+      </ul>
     </div>
   </div>
-  <div class="error-message">Error Message</div>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
 </div>
