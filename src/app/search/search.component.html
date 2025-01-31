@@ -1,6 +1,31 @@
-<p>
-    Implement search in this component
-</p>
-<p>
-    Implement details in the <a [routerLink]="['/details/123']">details component</a>
-</p>
+<div class="search-container">
+  <form class="search-form">
+    <input
+      type="text"
+      placeholder="Person"
+      class="search-input"
+      name="term"
+    />
+    <select name="colors" id="colors" class="search-select">
+      <option value="blue">blue</option>
+      <option value="red">red</option>
+      <option value="green">green</option>
+    </select>
+    <button type="submit" class="search-button">Search</button>
+  </form>
+
+  <div class="error-message">Error Message</div>
+
+  <div class="search-results">
+    <h1>Search Results</h1>
+    <div class="search-grid">
+      <div class="card">
+        <div class="card-title">
+          <h3>
+            <a [routerLink]="['/details/123']">Person Name</a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
